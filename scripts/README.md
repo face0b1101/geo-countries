@@ -22,7 +22,7 @@ tuttle run
 
 ## Docker
 
-There is a tuttle docker container so there is no need to install the above tools. 
+There is a tuttle docker container so there is no need to install the above tools.
 Navigate to the root of this project, then run the following:
 
 ```bash
@@ -35,3 +35,5 @@ docker run --rm \
 tuttle \
 tuttle run
 ```
+
+It will output an updated countries.geo.json file to /data.

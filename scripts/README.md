@@ -19,3 +19,19 @@ After you have checked out the code, go into the script directory and run the pr
 cd scripts
 tuttle run
 ```
+
+## Docker
+
+There is a tuttle docker container so there is no need to install the above tools. 
+Navigate to the root of this project, then run the following:
+
+```bash
+docker build -t tuttle ./scripts;
+docker run --rm \
+--name tuttle \
+-v $PWD/scripts/:/tuttle/scripts \
+-v $PWD/data:/tuttle/data \
+-w /tuttle/scripts \
+tuttle \
+tuttle run
+```

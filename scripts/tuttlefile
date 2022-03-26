@@ -1,15 +1,21 @@
-file://ne_10m_admin_0_countries.zip <- http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip ! download
+# This tuttlefile references a directory structure based on the docker run statement in the Readme.
+# If the docker run statement is changed then this file should be updated accordingly.
 
-file://ne_10m_admin_0_countries.README.html, file://ne_10m_admin_0_countries.VERSION.txt, file://ne_10m_admin_0_countries.dbf, file://ne_10m_admin_0_countries.prj, file://ne_10m_admin_0_countries.shp, file://ne_10m_admin_0_countries.shx <- file://ne_10m_admin_0_countries.zip
-    unzip ne_10m_admin_0_countries.zip
+# Expected to start in the /tuttle/scripts directory
+# make a downloads directory
+file://downloads <-
+    mkdir downloads
 
-file://ne_10m_admin_0_countries.geojson <- file://ne_10m_admin_0_countries.dbf, file://ne_10m_admin_0_countries.prj, file://ne_10m_admin_0_countries.shp, file://ne_10m_admin_0_countries.shx
-    ogr2ogr -select admin,iso_a3  -f geojson ne_10m_admin_0_countries.geojson ne_10m_admin_0_countries.shp
-    
-file://../data <-
-    cd ..
-    mkdir data
+file://downloads/ne_10m_admin_0_countries.zip <- http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip ! download
 
-file://../data/countries.geojson <- file://ne_10m_admin_0_countries.geojson, file://../data
-# Change the name of the fields after conversion
-    cat ne_10m_admin_0_countries.geojson | sed 's/"admin": /"name": /g' | sed 's/"iso_a3": /"ISO3166-1-Alpha-3": /g'  > ../data/countries.geojson
+
+file://downloads/ne_10m_admin_0_countries.README.html, file://downloads/ne_10m_admin_0_countries.VERSION.txt, file://downloads/ne_10m_admin_0_countries.dbf, file://downloads/ne_10m_admin_0_countries.prj, file://downloads/ne_10m_admin_0_countries.shp, file://downloads/ne_10m_admin_0_countries.shx <- file://downloads/ne_10m_admin_0_countries.zip
+    unzip downloads/ne_10m_admin_0_countries.zip -d downloads
+
+file://downloads/ne_10m_admin_0_countries.geojson <- file://downloads/ne_10m_admin_0_countries.dbf, file://downloads/ne_10m_admin_0_countries.prj, file://downloads/ne_10m_admin_0_countries.shp, file://downloads/ne_10m_admin_0_countries.shx
+    ogr2ogr -select admin,iso_a3  -f geojson downloads/ne_10m_admin_0_countries.geojson downloads/ne_10m_admin_0_countries.shp
+
+file://../data/countries.geojson <- file://downloads/ne_10m_admin_0_countries.geojson, file://../data
+    # Change the name of the fields after conversion
+    cat downloads/ne_10m_admin_0_countries.geojson | sed 's/"admin": /"name": /g' | sed 's/"iso_a3": /"ISO3166-1-Alpha-3": /g'  > ../data/countries.geojson
+    rm -rf downloads

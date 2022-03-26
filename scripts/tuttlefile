@@ -1,6 +1,8 @@
 # This tuttlefile references a directory structure based on the docker run statement in the Readme.
 # If the docker run statement is changed then this file should be updated accordingly.
 
+# See https://github.com/lexman/tuttle/blob/master/docs/reference/tuttlefile_syntax.md for tuttle syntax
+
 # Expected to start in the /tuttle/scripts directory
 # make a downloads directory
 file://downloads <-

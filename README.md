@@ -1,3 +1,5 @@
+# Geo-Countries Data
+
 Geodata [data package][datapackage] providing geojson polygons for all the world's countries.
 Perfect for use in apps and visualizations.
 
@@ -5,7 +7,8 @@ Perfect for use in apps and visualizations.
 
 The data comes from [Natural Earth][naturalearth], a community effort to make visually pleasing, well-crafted maps with cartography or GIS software at small scale.
 
-The shape of the countries have two fields : 
+The shape of the countries have two fields :
+
 * name : the common name for the country
 * ISO3166-1-Alpha-3 : three letters iso code of the country
 
@@ -32,8 +35,3 @@ All source code is licenced under the [MIT licence][mit].
 [pddl]: http://opendatacommons.org/licenses/pddl/1.0/
 [lexman]: http://github.com/lexman
 [okfn]: http://okfn.org/
-
-
-
-
-
